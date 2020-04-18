@@ -1,0 +1,1 @@
+ffmpeg -i img/rosetta_%03d.png -vcodec libx264 -crf 1 rosetta.mp4
