@@ -2,7 +2,7 @@
 
 f = function (t, sign, circles) {
     series = 0 : circles
-    rot = function (t) sum(exp(1i * pi * t * (-5) ^ series) / ((sign * 2.5) ^ series))
+    rot = function (t) sum(exp(1i * t * (-5) ^ series) / ((sign * 2.5) ^ series))
     vapply(t, rot, complex(1L))
 }
 
@@ -39,14 +39,14 @@ cosine_interpolate = function (t, to) {
 }
 
 # Animate the construction of the figure by circumscribing the circular input
-# coordinates from 0 to π progressively. The figure is constructed by connecting
-# 100,000 individual points but since animating 100,000 steps would be slow and
-# unnecessary to get a fluid animation, we only animate 1000 frames.
+# coordinates from 0 to 2π progressively. The figure is constructed by
+# connecting 100,000 individual points but since animating 100,000 steps would
+# be slow and unnecessary to get a fluid animation, we only animate 1000 frames.
 figure_points = 100000L
 frames = 1000L
 
 circles = 4L
-ts = seq(0, 2, length.out = figure_points)
+ts = seq(0, 2 * pi, length.out = figure_points)
 z1data = f(ts, 1, circles)
 z2data = f(ts, -1, circles)
 
