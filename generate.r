@@ -53,12 +53,12 @@ z2data = f(ts, -1, circles)
 dir.create('img', showWarnings = FALSE)
 
 for (frame in seq(frames)) {
-    t = (frame - 1L) * figure_points / frames + 1L
-    idx = cosine_interpolate(t, length(ts))
-    cat(sprintf('\rt = %d (%.1f%%)', idx, idx / length(ts) * 100))
-    png(sprintf('img/rosetta_%03d.png', frame))
+    i = (frame - 1L) * figure_points / frames + 1L
+    idx = cosine_interpolate(i, length(ts))
+    cat(sprintf('\ri = %d (%.1f%%)', idx, idx / length(ts) * 100))
+    png(sprintf('img/rosetta_%04d.png', frame))
     plot_rosetta(ts, z1data, z2data, up_to = idx, circles = circles)
     dev.off()
 }
 
-cat(sprintf('\rt = %d (%.1f%%)\n', figure_points, 100))
+cat(sprintf('\ri = %d (%.1f%%)\n', figure_points, 100))
